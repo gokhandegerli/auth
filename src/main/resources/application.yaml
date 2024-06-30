@@ -1,6 +1,6 @@
 spring:
   application:
-    name: authentication
+    name: auth
 
   data:
     mongodb:
