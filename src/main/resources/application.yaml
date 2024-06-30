@@ -1,19 +1,34 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: auth
-
+  datasource:
+    url: jdbc:postgresql://localhost:5440/auth
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   data:
     mongodb:
       uri: mongodb://localhost:27020/authentication
       auto-index-creation: true
     redis:
       database: 0
-      lettuce:
-        pool:
-          max-active: 30
-          max-idle: 8
-          min-idle: 0
-          max-wait: -1ms
-        shutdown-timeout: 100ms
-      cluster:
-        nodes: localhost:6380
+      host: localhost
+      port: 6380
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/oauth2/default
+
+jwt:
+  secret: myJwtSecret
+  expiration: 86400000  # 1 day in milliseconds
+
