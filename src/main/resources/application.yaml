@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: authentication
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27020/authentication
+      auto-index-creation: true
+    redis:
+      database: 0
+      lettuce:
+        pool:
+          max-active: 30
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+        shutdown-timeout: 100ms
+      cluster:
+        nodes: localhost:6380
