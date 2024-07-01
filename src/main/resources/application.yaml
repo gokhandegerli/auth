@@ -1,17 +1,26 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5440/auth
+    url: jdbc:postgresql://localhost:5440/jwtauth
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+
+application:
+  security:
+    jwt:
+      secret-key: 4bb6d1dfbafb64a681139d1586b6f1160d18159afd57c8c79136d7490630407c
+      access-token-expiration: 86400000
+      refresh-token-expiration: 604800000
