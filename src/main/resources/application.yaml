@@ -1,9 +1,7 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
-  application:
-    name: auth
   datasource:
     url: jdbc:postgresql://localhost:5440/auth
     username: postgres
@@ -13,22 +11,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  data:
-    mongodb:
-      uri: mongodb://localhost:27020/authentication
-      auto-index-creation: true
-    redis:
-      database: 0
-      host: localhost
-      port: 6380
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/oauth2/default
-
-jwt:
-  secret: myJwtSecret
-  expiration: 86400000  # 1 day in milliseconds
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
